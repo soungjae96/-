@@ -41,14 +41,14 @@ Resources:
       Tags:
         - Key: Name
           Value: public-RT
-  # Private RT
-  PrivateRT:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: private-RT
+  # # Private RT
+  # PrivateRT:
+  #   Type: AWS::EC2::RouteTable
+  #   Properties:
+  #     VpcId: !Ref VPC
+  #     Tags:
+  #       - Key: Name
+  #         Value: private-RT
   # Public RT Default Route
   DefaultPublicRoute:
     Type: AWS::EC2::Route
@@ -69,16 +69,16 @@ Resources:
       Tags:
         - Key: Name
           Value: Public-SN
-  # Private SN
-  PrivateSN:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      AvailabilityZone: !Select [0, !GetAZs '']
-      CidrBlock: 10.0.1.0/24
-      Tags:
-        - Key: Name
-          Value: Private-SN
+  # # Private SN
+  # PrivateSN:
+  #   Type: AWS::EC2::Subnet
+  #   Properties:
+  #     VpcId: !Ref VPC
+  #     AvailabilityZone: !Select [0, !GetAZs '']
+  #     CidrBlock: 10.0.1.0/24
+  #     Tags:
+  #       - Key: Name
+  #         Value: Private-SN
 ####################################################################
 # SN + RT Association 
   # Public
@@ -87,12 +87,12 @@ Resources:
     Properties:
       RouteTableId: !Ref PublicRT
       SubnetId: !Ref PublicSN
-  # Private
-  PrivateSNRouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref PrivateRT
-      SubnetId: !Ref PrivateSN
+  # # Private
+  # PrivateSNRouteTableAssociation:
+  #   Type: AWS::EC2::SubnetRouteTableAssociation
+  #   Properties:
+  #     RouteTableId: !Ref PrivateRT
+  #     SubnetId: !Ref PrivateSN
 ####################################################################
 # Security Groups
   # SG
